@@ -23,6 +23,7 @@ class CurlClient implements ClientInterface
         $username = $config->getUsername();
         $password = $config->getPassword();
         $jsonRequest = json_encode($params);
+        $jsonRequest = str_replace('\\', '', $jsonRequest);
 
         // log the requestUr, params and json request
         $logger->info("Request url to Adyen: " . $requestUrl);
@@ -58,6 +59,7 @@ class CurlClient implements ClientInterface
 
         //Execute the request
         $result = curl_exec($ch);
+dump($ch, $jsonRequest, $result, $headers, $username.":".$password);
         $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         // log the raw response
