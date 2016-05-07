@@ -57,6 +57,9 @@ class CurlClient implements ClientInterface
         // return the result
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
+// XXX : CURL Error 60 SSL
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
         //Execute the request
         $result = curl_exec($ch);
 dump($ch, $jsonRequest, $result, $headers, $username.":".$password);

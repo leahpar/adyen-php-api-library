@@ -1,6 +1,6 @@
 <?php
 
-namespace Adyen\Service\Resource\Payment;
+namespace Adyen\Service\Resource\PayoutThirdParty;
 
 class Confirm extends \Adyen\Service\Resource
 {
@@ -13,7 +13,7 @@ class Confirm extends \Adyen\Service\Resource
 
     public function __construct($service)
     {
-        $this->_endpoint = $service->getClient()->getConfig()->get('endpoint') . '/pal/servlet/Payment/' . $service->getClient()->getApiVersion() . '/confirm';
+        $this->_endpoint = $service->getClient()->getConfig()->get('endpoint') . '/pal/servlet/Payment/' . $service->getClient()->getApiVersion() . '/confirmThirdParty';
         parent::__construct($service, $this->_endpoint, $this->_requiredFields);
     }
 

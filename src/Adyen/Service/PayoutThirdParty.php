@@ -2,29 +2,30 @@
 
 namespace Adyen\Service;
 
-use Adyen\Service\Resource\Payment\Confirm;
-use Adyen\Service\Resource\Payment\Decline;
-use Adyen\Service\Resource\Payment\Submit;
 
-class Payout extends \Adyen\Service
+use Adyen\Service\Resource\PayoutThirdParty\Confirm;
+use Adyen\Service\Resource\PayoutThirdParty\Decline;
+use Adyen\Service\Resource\PayoutThirdParty\StoreAndSubmit;
+
+class PayoutThirdParty extends \Adyen\Service
 {
 
-    protected $_submit;
     protected $_confirm;
     protected $_decline;
+    protected $_storeAndSubmit;
 
     public function __construct(\Adyen\Client $client)
     {
         parent::__construct($client);
 
-        $this->_request = new Submit($this);
+        $this->_storeAndSubmit = new StoreAndSubmit($this);
         $this->_confirm = new Confirm($this);
         $this->_decline = new Decline($this);
     }
 
-    public function submit($params)
+    public function storeAndSubmit($params)
     {
-        $result =  $this->_submit->request($params);
+        $result =  $this->_storeAndSubmit->request($params);
         return $result;
     }
 
