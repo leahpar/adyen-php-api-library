@@ -62,7 +62,7 @@ class CurlClient implements ClientInterface
 
         //Execute the request
         $result = curl_exec($ch);
-dump($ch, $jsonRequest, $result, $headers, $username.":".$password);
+//dump($ch, $jsonRequest, $result, $username.":".$password);
         $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         // log the raw response
